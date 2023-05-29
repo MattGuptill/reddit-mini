@@ -1,0 +1,24 @@
+header {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  background-color: grey;
+  position: fixed;
+}
+
+.nav-bar {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto 1rem;
+}
+
+.main-container {
+  position:relative;
+  top: 4.4rem;
+  height: 100px;
+  width: 100%;
+  background-color: blue;
+}
