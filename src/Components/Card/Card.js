@@ -1,4 +1,7 @@
 import React from 'react';
+import { Comments } from '../Comments/Comments';
+import { User } from '../User/User';
+import { PostTime } from '../PostTime/PostTime';
 
 
 export default function Card(post) {
@@ -19,8 +22,8 @@ export default function Card(post) {
                 {post.content}
             </div>
             <div className='card-bottom'>
-                {/* <User /> */}
-                {/* <PostTime /> */}
+                <User />
+                <PostTime />
                 <Comments />
             </div>
         </div>
