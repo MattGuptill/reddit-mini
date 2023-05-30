@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const fetchResults = createAsyncThunk('search/getSubredditResults', 
+export const fetchResults = createAsyncThunk('search/getSubredditResults', 
     async (term) => {
         const response = await fetch(`https://www.reddit.com/search.json?q=${term}`);
         const json = response.json();
@@ -18,7 +18,7 @@ const searchSlice = createSlice({
         hasError: false
     },
     reducers: {
-        setTerm: (state, action) => {
+        searchTerm: (state, action) => {
             state.term = action.payload;
         },
         clearTerm: (state, action) => {
@@ -42,4 +42,4 @@ const searchSlice = createSlice({
 })
 
 export default searchSlice.reducer;
-export const {setTerm, clearTerm} = search.actions
+export const {searchTerm, clearTerm} = search.actions
