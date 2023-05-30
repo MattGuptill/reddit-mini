@@ -18,17 +18,18 @@ const subredditSlice = createSlice({
     reducers: {},
 
     extraReducers: {
-        [getSubreddit.pending]: (state, action) => {
+        [fetchSubreddits.pending]: (state, action) => {
             state.isLoading = true;
             state.hasError = false;
         },
 
-        [getSubreddit.fulfilled]: (state, action) => {
+        [fetchSubreddits.fulfilled]: (state, action) => {
+            state.results = action.payload;
             state.isLoading = false;
             state.hasError = false;
         },
 
-        [getSubreddit.rejected]: (state, action) => {
+        [fetchSubreddits.rejected]: (state, action) => {
             state.isLoading = false;
             state.hasError = true;
         },
