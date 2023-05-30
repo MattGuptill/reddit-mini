@@ -1,5 +1,5 @@
-import subredditSlice from "./Features/subredditSlice";
-import searchSlice from "./Features/searchSlice";
+import subredditsReducer from "./Features/subredditSlice";
+import searchReducer from "./Features/searchSlice";
 import { configureStore } from "@reduxjs/toolkit";
 
 const store = configureStore({
@@ -8,3 +8,5 @@ const store = configureStore({
         search: searchReducer
     }
 })
+
+export default store;
