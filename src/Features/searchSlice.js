@@ -1,13 +1,13 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchResults = createAsyncThunk('search/getSearchResults', 
+export const fetchResults = createAsyncThunk('search/getSearchResults',
     async (term) => {
         const response = await fetch(`https://www.reddit.com/search.json?q=${term}`);
-        const json = response.json();
-        return json.data.children.map(post => post.data)
+        const json = await response.json();
+        return json.data.children.map(post => post.data);
     }
 );
-
 
 const searchSlice = createSlice({
     name: 'search',
@@ -15,10 +15,10 @@ const searchSlice = createSlice({
         term: '',
         results: [],
         isLoading: false,
-        hasError: false
+        error: false
     },
     reducers: {
-        searchTerm: (state, action) => {
+        setTerm: (state, action) => {
             state.term = action.payload;
         },
         clearTerm: (state, action) => {
@@ -28,19 +28,19 @@ const searchSlice = createSlice({
     extraReducers: {
         [fetchResults.pending]: (state, action) => {
             state.isLoading = true;
-            state.hasError = false;
+            state.error = false;
         },
         [fetchResults.fulfilled]: (state, action) => {
             state.results = action.payload;
             state.isLoading = false;
-            state.hasError = false;
+            state.error = false;
         },
         [fetchResults.rejected]: (state, action) => {
             state.isLoading = false;
-            state.hasError = true;
+            state.error = true;
         }
     }
-})
+});
 
 export default searchSlice.reducer;
-export const {searchTerm, clearTerm} = searchSlice.actions;
+export const { setTerm, clearTerm } = searchSlice.actions;

@@ -1,24 +1,15 @@
-header {
-  height: 70px;
-  width: 100%;
+
+main {
+  background-color: #DDE6ED;
+  max-width: 1600px;
   display: flex;
-  background-color: grey;
-  position: fixed;
+  justify-content: space-around;
 }
 
-.nav-bar {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: auto 1rem;
+@media only screen and (max-width: 640px) {
+  
+.side-menu {
+  display: none;
 }
-
-.main-container {
-  position:relative;
-  top: 4.4rem;
-  height: 100%;
-  width: 100%;
-  background-color: blue;
+  
 }
